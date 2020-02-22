@@ -18,15 +18,15 @@ module.exports.up = (queryInterface, DataTypes) => {
       },
       createdAt: {
         allowNull: false,
-        tyoe: DataTypes.DATE
+        type: DataTypes.DATE
       },
       updatedAt: {
         allowNull: false,
-        tyoe: DataTypes.DATE
+        type: DataTypes.DATE
       },
       deletedAt: {
         allowNull: true,
-        tyoe: DataTypes.DATE
+        type: DataTypes.DATE
       }
     },
     {
