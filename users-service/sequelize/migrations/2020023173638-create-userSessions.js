@@ -1,26 +1,31 @@
 module.exports.up = (queryInterface, DataTypes) => {
   return queryInterface.createTable(
-    "users",
+    "userSessions",
     {
       id: {
         allowNull: false,
         primaryKey: true,
         type: DataTypes.UUID
       },
-      userId: {
+      email: {
         allowNull: false,
-        references: {
-          key: "id",
-          model: "users"
-        },
-        type: DataTypes.UUID
+        type: DataTypes.STRING,
+        unique: true
       },
-      expiresAt: {
+      passwordHash: {
         allowNull: false,
-        type: DataTypes.DATE
+        type: DataTypes.CHAR(64)
       },
       createdAt: {
         allowNull: false,
+        type: DataTypes.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE
+      },
+      deletedAt: {
+        allowNull: true,
         type: DataTypes.DATE
       }
     },
