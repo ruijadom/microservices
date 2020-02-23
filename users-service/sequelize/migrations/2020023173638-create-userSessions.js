@@ -7,25 +7,20 @@ module.exports.up = (queryInterface, DataTypes) => {
         primaryKey: true,
         type: DataTypes.UUID
       },
-      email: {
+      userId: {
         allowNull: false,
-        type: DataTypes.STRING,
-        unique: true
+        references: {
+          key: "id",
+          model: "users"
+        },
+        type: DataTypes.UUID
       },
-      passwordHash: {
+      expiresAt: {
         allowNull: false,
-        type: DataTypes.CHAR(64)
+        type: DataTypes.DATE
       },
       createdAt: {
         allowNull: false,
-        type: DataTypes.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE
-      },
-      deletedAt: {
-        allowNull: true,
         type: DataTypes.DATE
       }
     },
@@ -34,3 +29,6 @@ module.exports.up = (queryInterface, DataTypes) => {
     }
   );
 };
+
+module.exports.down = queryInterface =>
+  queryInterface.dropTable("userSessions");
